@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twins Construction LLC. | Building Dreams</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background-image: url('https://i.imgur.com/iC21pmx.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 95vh;
+            position: relative;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .login-modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .login-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+        .clockin-modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .clockin-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Navigation Bar -->
+    <nav class="bg-black text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://i.imgur.com/QYmz5dH.png" alt="Company Logo" class="h-12 mr-3">
+                <span class="text-yellow-400 font-bold text-xl">Twins Construction LLC</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="hover:text-yellow-400 transition">Home</a>
+                <a href="#about" class="hover:text-yellow-400 transition">About Us</a>
+                <a href="#services" class="hover:text-yellow-400 transition">Services</a>
+                <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
+                <button onclick="openLoginModal()" class="bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-500 transition">Employee Login</button>
+            </div>
+            <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-black pb-4 px-4">
+            <a href="#" class="block py-2 hover:text-yellow-400 transition">Home</a>
+            <a href="#about" class="block py-2 hover:text-yellow-400 transition">About Us</a>
+            <a href="#services" class="block py-2 hover:text-yellow-400 transition">Services</a>
+            <a href="#contact" class="block py-2 hover:text-yellow-400 transition">Contact</a>
+            <button onclick="openLoginModal()" class="w-full bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-500 transition mt-2">Employee Login</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Building Washington's Future</h1>
+                <p class="text-xl md:text-2xl text-white mb-8">25+ Years of Excellence in Construction</p>
+                <a href="#contact" class="bg-yellow-400 text-black font-bold px-8 py-3 rounded hover:bg-yellow-500 transition">Get a Free Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">About Our Company</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://i.imgur.com/v2SPGEE.jpeg">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">Your Trusted Construction Experts</h3>
+                    <p class="text-gray-700 mb-4">Founded in Washington State, our construction company has been building dreams for over 25 years. We take pride in our craftsmanship, attention to detail, and commitment to customer satisfaction.</p>
+                    <p class="text-gray-700 mb-4">Our team of experienced professionals specializes in manufactured homes, custom home building, and general contracting services across Washington.</p>
+                    <p class="text-gray-700 mb-6">We believe in transparent communication, quality materials, and delivering projects on time and within budget.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-yellow-400 text-black px-4 py-2 rounded font-bold">Licensed</div>
+                        <div class="bg-yellow-400 text-black px-4 py-2 rounded font-bold">Insured</div>
+                        <div class="bg-yellow-400 text-black px-4 py-2 rounded font-bold">Bonded</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Manufactured Homes" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Manufactured Homes</h3>
+                        <p class="text-gray-700 mb-4">Quality manufactured homes built to your specifications with the highest standards in the industry.</p>
+                        <a href="#contact" class="text-yellow-400 font-bold hover:text-yellow-500 transition">Learn More →</a>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Custom Homes" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Custom Home Building</h3>
+                        <p class="text-gray-700 mb-4">Dream home construction tailored to your unique vision and lifestyle needs.</p>
+                        <a href="#contact" class="text-yellow-400 font-bold hover:text-yellow-500 transition">Learn More →</a>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="General Contracting" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">General Contracting</h3>
+                        <p class="text-gray-700 mb-4">Full-service contracting for residential and commercial projects of all sizes.</p>
+                        <a href="#contact" class="text-yellow-400 font-bold hover:text-yellow-500 transition">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"The team at WA Construction built our dream home exactly as we envisioned. Their attention to detail and communication throughout the process was exceptional."</p>
+                    <div class="flex items-center">
+                        <div class="bg-yellow-400 w-12 h-12 rounded-full flex items-center justify-center text-black font-bold mr-4">JD</div>
+                        <div>
+                            <h4 class="font-bold">John & Diane R.</h4>
+                            <p class="text-gray-600">Seattle, WA</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"We Highly Highly recommend Twins Construction! They were amazing, understanding and so gracious to work with!Our project was definitely not an easy one and in the frustration of the permitting process they were super knowledgeable and helpful in making decisions! I can't thank them enough for helping our family and their professionalism is unmatched!"</p>
+                    <div class="flex items-center">
+                        <div class="bg-yellow-400 w-12 h-12 rounded-full flex items-center justify-center text-black font-bold mr-4">MS</div>
+                        <div>
+                            <h4 class="font-bold">Rebecca A.</h4>
+                            <p class="text-gray-600">Richland, WA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
+                    <p class="text-gray-700 mb-6">Ready to start your construction project? Contact us today for a free consultation and quote.</p>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-400 w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Address</h4>
+                                <p class="text-gray-700">1822 Gap Rd, Granger, WA 98932</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-400 w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Phone</h4>
+                                <p class="text-gray-700">(509) 840-8622</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-yellow-400 w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-700">Twinsconstructionllc.1@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-400 p-4 rounded-lg">
+                        <h4 class="font-bold text-black mb-2">Business Hours</h4>
+                        <p class="text-black">Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        <p class="text-black">Saturday: 9:00 AM - 1:00 PM</p>
+                        <p class="text-black">Sunday: Closed</p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-white shadow-lg rounded-lg p-6">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-yellow-400">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-yellow-400">
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block text-gray-700 font-bold mb-2">Phone</label>
+                            <input type="tel" id="phone" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-yellow-400">
+                        </div>
+                        <div class="mb-4">
+                            <label for="service" class="block text-gray-700 font-bold mb-2">Service Interested In</label>
+                            <select id="service" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-yellow-400">
+                                <option value="">Select a service</option>
+                                <option value="manufactured">Manufactured Homes</option>
+                                <option value="custom">Custom Home Building</option>
+                                <option value="contracting">General Contracting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-bold mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-yellow-400"></textarea>
+                        </div>
+                        <button type="submit" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded hover:bg-yellow-500 transition w-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="https://i.imgur.com/QYmz5dH.png" alt="Company Logo" class="h-10 mr-3">
+                        <span class="text-yellow-400 font-bold text-xl">Twins Construction LLC</span>
+                    </div>
+                    <p class="mt-2 text-gray-400">Building Washington's Future. </p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">© 2025 Twins Construction LLC. All rights reserved.</p>
+                    <div class="mt-2">
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition mr-4">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-content">
+            <span class="close text-gray-500 float-right text-2xl font-bold hover:text-black cursor-pointer" onclick="closeLoginModal()">&times;</span>
+            <h2 class="text-2xl font-bold mb-6 text-center">Employee Login</h2>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700 mb-2">Username</label>
+                    <input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-yellow-400" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-yellow-400" required>
+                </div>
+                <button type="submit" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded hover:bg-yellow-500 transition w-full">Login</button>
+            </form>
+            <div id="loginError" class="text-red-500 mt-4 text-center hidden">Invalid username or password. Please try again.</div>
+        </div>
+    </div>
+
+    <!-- Clock In/Out Modal -->
+    <div id="clockinModal" class="clockin-modal">
+        <div class="clockin-content">
+            <span class="close text-gray-500 float-right text-2xl font-bold hover:text-black cursor-pointer" onclick="closeClockinModal()">&times;</span>
+            <h2 class="text-2xl font-bold mb-6 text-center">Employee Time Tracking</h2>
+            <div class="text-center mb-6">
+                <div id="currentTime" class="text-3xl font-bold mb-2">00:00:00</div>
+                <div id="currentDate" class="text-gray-600">Monday, January 1, 2023</div>
+            </div>
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold">Employee:</span>
+                    <span id="loggedInEmployee" class="text-gray-700">Carol Velazquez</span>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold">Position:</span>
+                    <span id="employeePosition" class="text-gray-700">Project Manager</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold">Status:</span>
+                    <span id="clockStatus" class="text-gray-700">Not Clocked In</span>
+                </div>
+            </div>
+            <div class="flex space-x-4">
+                <button id="clockInBtn" class="bg-green-500 text-white font-bold px-6 py-3 rounded hover:bg-green-600 transition flex-1">Clock In</button>
+                <button id="clockOutBtn" class="bg-red-500 text-white font-bold px-6 py-3 rounded hover:bg-red-600 transition flex-1" disabled>Clock Out</button>
+            </div>
+            <div id="timeRecords" class="mt-6">
+                <h3 class="font-bold mb-2">Today's Records:</h3>
+                <div id="recordsList" class="border-t border-gray-200 pt-2">
+                    <p class="text-gray-500 italic">No records yet today</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Login modal functions
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('loginError').classList.add('hidden');
+        }
+
+        // Clock in modal functions
+        function openClockinModal() {
+            document.getElementById('clockinModal').style.display = 'block';
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        function closeClockinModal() {
+            document.getElementById('clockinModal').style.display = 'none';
+        }
+
+        // Update clock display
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            
+            document.getElementById('currentTime').textContent = timeStr;
+            document.getElementById('currentDate').textContent = dateStr;
+        }
+
+        // Login form handling
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Valid credentials
+            const validCredentials = [
+                { username: 'crlvlz12', password: 'Suerte1', name: 'Carol Velazquez', position: 'Project Manager' },
+                { username: 'AV2003', password: 'suerte2', name: 'Anthony Velazquez', position: 'Foreman' }
+            ];
+            
+            const user = validCredentials.find(cred => 
+                cred.username === username && cred.password === password
+            );
+            
+            if (user) {
+                // Successful login
+                closeLoginModal();
+                document.getElementById('loggedInEmployee').textContent = user.name;
+                document.getElementById('employeePosition').textContent = user.position;
+                openClockinModal();
+            } else {
+                // Failed login
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        });
+
+        // Clock in/out functionality
+        let isClockedIn = false;
+        let clockInTime = null;
+        let recordsToday = [];
+        
+        document.getElementById('clockInBtn').addEventListener('click', function() {
+            if (!isClockedIn) {
+                const now = new Date();
+                clockInTime = now;
+                isClockedIn = true;
+                
+                document.getElementById('clockStatus').textContent = 'Clocked In';
+                document.getElementById('clockStatus').className = 'text-green-500';
+                document.getElementById('clockInBtn').disabled = true;
+                document.getElementById('clockOutBtn').disabled = false;
+                
+                // Add to records
+                recordsToday.push({
+                    type: 'in',
+                    time: now
+                });
+                
+                updateRecordsDisplay();
+            }
+        });
+        
+        document.getElementById('clockOutBtn').addEventListener('click', function() {
+            if (isClockedIn) {
+                const now = new Date();
+                isClockedIn = false;
+                
+                document.getElementById('clockStatus').textContent = 'Not Clocked In';
+                document.getElementById('clockStatus').className = 'text-gray-700';
+                document.getElementById('clockInBtn').disabled = false;
+                document.getElementById('clockOutBtn').disabled = true;
+                
+                // Add to records
+                recordsToday.push({
+                    type: 'out',
+                    time: now
+                });
+                
+                // Calculate hours worked (for demo purposes)
+                const hoursWorked = ((now - clockInTime) / (1000 * 60 * 60)).toFixed(2);
+                
+                // In a real app, you would send this data to the server
+                console.log(`Clocked out. Hours worked: ${hoursWorked}`);
+                
+                updateRecordsDisplay();
+            }
+        });
+        
+        function updateRecordsDisplay() {
+            const recordsList = document.getElementById('recordsList');
+            
+            if (recordsToday.length === 0) {
+                recordsList.innerHTML = '<p class="text-gray-500 italic">No records yet today</p>';
+                return;
+            }
+            
+            recordsList.innerHTML = '';
+            
+            for (let i = 0; i < recordsToday.length; i++) {
+                const record = recordsToday[i];
+                const recordElement = document.createElement('p');
+                recordElement.className = 'text-gray-700';
+                
+                const timeStr = record.time.toLocaleTimeString();
+                
+                if (record.type === 'in') {
+                    recordElement.textContent = `Clock In: ${timeStr}`;
+                    recordElement.className += ' text-green-500';
+                } else {
+                    recordElement.textContent = `Clock Out: ${timeStr}`;
+                    recordElement.className += ' text-red-500';
+                }
+                
+                recordsList.appendChild(recordElement);
+            }
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const clockinModal = document.getElementById('clockinModal');
+            
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+            
+            if (event.target === clockinModal) {
+                closeClockinModal();
+            }
+        }
+    </script>
+</body>
+</html>
